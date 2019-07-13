@@ -62,12 +62,12 @@ def create_maskfin(maskref, maskdet):
 				cv2.ellipse(details,(x,y),(aMax,aMin),angle,0,360,(255,0,255),-1) #purple
 			elif obj.name == "vag":
 				cv2.ellipse(details,(x,y),(aMax,aMin),angle,0,360,(255,0,0),-1) #blue
-			elif obj.name == "hair":
-				xmin = x - int(obj.w/2)
-				ymin = y - int(obj.h/2)
-				xmax = x + int(obj.w/2)
-				ymax = y + int(obj.h/2)
-				cv2.rectangle(details,(xmin,ymin),(xmax,ymax),(100,100,100),-1)
+			#elif obj.name == "hair":
+			#	xmin = x - int(obj.w/2)
+			#	ymin = y - int(obj.h/2)
+			#	xmax = x + int(obj.w/2)
+			#	ymax = y + int(obj.h/2)
+			#	cv2.rectangle(details,(xmin,ymin),(xmax,ymax),(100,100,100),-1)
 
 		#Define the green color filter
 		f1 = np.asarray([0, 250, 0])   # green color filter
