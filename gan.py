@@ -90,8 +90,10 @@ class DeepModel(torch.nn.Module):
 
 	def __encode_input(self, label_map, inst_map=None, real_image=None, feat_map=None, infer=False):             
 		if (len(self.gpu_ids) > 0): 
+			print('running in GPU mode')
 			input_label = label_map.data.cuda() #GPU
 		else: 
+			print('running in CPU mode')
 			input_label = label_map.data #CPU
 			
 		return input_label, inst_map, real_image, feat_map
