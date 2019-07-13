@@ -7,7 +7,6 @@ from gan import DataLoader, DeepModel, tensor2im
 from opencv_transform.mask_to_maskref import create_maskref
 from opencv_transform.maskdet_to_maskfin import create_maskfin
 from opencv_transform.dress_to_correct import create_correct
-from opencv_transform.nude_to_watermark import create_watermark
 
 """
 run.py
@@ -21,11 +20,10 @@ Transformation happens in 6 phases:
 	3: maskref -> maskdet [GAN] maskref_to_maskdet
 	4: maskdet -> maskfin [opencv] maskdet_to_maskfin
 	5: maskfin -> nude [GAN] maskfin_to_nude
-	6: nude -> watermark [opencv] nude_to_watermark
 
 """
 
-phases = ["dress_to_correct", "correct_to_mask", "mask_to_maskref", "maskref_to_maskdet", "maskdet_to_maskfin", "maskfin_to_nude", "nude_to_watermark"]
+phases = ["dress_to_correct", "correct_to_mask", "mask_to_maskref", "maskref_to_maskdet", "maskdet_to_maskfin", "maskfin_to_nude"]
 
 class Options():
 
@@ -74,7 +72,7 @@ class Options():
 
 # process(cv_img, mode)
 # return:
-# 	watermark image
+# 	nude image
 def process(cv_img):
 
 	#InMemory cv2 images:
@@ -85,7 +83,6 @@ def process(cv_img):
 	maskfin = None
 	maskdet = None
 	nude = None
-	watermark = None
 
 	for index, phase in enumerate(phases):
 
@@ -143,8 +140,4 @@ def process(cv_img):
 		elif (phase == "maskdet_to_maskfin"):
 			maskfin = create_maskfin(maskref, maskdet)
 
-		#nude_to_watermark phase (opencv)
-		elif (phase == "nude_to_watermark"):
-			watermark = create_watermark(nude)
-
-	return watermark
+	return nude
