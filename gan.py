@@ -7,6 +7,13 @@ import io
 import os
 import functools
 
+
+device = 'CPU-only'
+if torch.cuda.is_available():
+    device = torch.cuda.get_device_name(0)
+
+print('Running on: {}'.format(device))
+
 class DataLoader():
 
 	def __init__(self, opt, cv_img):

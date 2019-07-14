@@ -2,8 +2,13 @@ import sys
 import cv2
 import os
 
-from tqdm import tqdm
 from run import process
+
+try:
+    import google.colab
+    from tqdm import tqdm_notebook as tqdm
+except:
+    from tqdm import tqdm
 
 # ------------------------------------------------- main()
 def main():
@@ -15,7 +20,7 @@ def main():
     total_frames = length = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
     success,image = vidcap.read()
     count = 0
-    for i in tqdm(range(total_frames)):
+    for i in tqdm(range(total_frames), desc="Frames"):
         success, image = vidcap.read()
         if not success: break
 
