@@ -86,8 +86,6 @@ def process(cv_img):
 
 	for index, phase in enumerate(phases):
 
-		print("Executing phase: " + phase) 
-			
 		#GAN phases:
 		if (phase == "correct_to_mask") or (phase == "maskref_to_maskdet") or (phase == "maskfin_to_nude"):
 
