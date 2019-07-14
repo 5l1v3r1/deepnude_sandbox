@@ -1,10 +1,5 @@
 import cv2
-
-try:
-    import google.colab
-    from tqdm import tqdm_notebook as tqdm
-except:
-    from tqdm import tqdm
+from tqdm import tqdm
 
 #Import Neural Network Model
 from gan import DataLoader, DeepModel, tensor2im

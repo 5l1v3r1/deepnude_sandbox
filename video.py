@@ -1,14 +1,10 @@
 import sys
 import cv2
 import os
+from tqdm import tqdm
 
 from run import process
 
-try:
-    import google.colab
-    from tqdm import tqdm_notebook as tqdm
-except:
-    from tqdm import tqdm
 
 # ------------------------------------------------- main()
 def main():
