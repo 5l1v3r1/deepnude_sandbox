@@ -1,5 +1,4 @@
 import cv2
-from tqdm import tqdm
 
 #Import Neural Network Model
 from gan import DataLoader, DeepModel, tensor2im
@@ -85,7 +84,7 @@ def process(cv_img):
 	maskdet = None
 	nude = None
 
-	for index, phase in enumerate(tqdm(phases, desc='Phases')):
+	for index, phase in enumerate(phases):
 
 		#GAN phases:
 		if (phase == "correct_to_mask") or (phase == "maskref_to_maskdet") or (phase == "maskfin_to_nude"):
