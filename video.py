@@ -18,6 +18,8 @@ def main():
     count = 0
     for i in tqdm(range(total_frames), desc="Frames"):
         success, image = vidcap.read()
+        count += 1
+
         if not success: break
 
         filename = 'frame-{}.png'.format(str(count).zfill(8))
@@ -30,7 +32,6 @@ def main():
         watermark = process(image)
         cv2.imwrite(filename, watermark)
 
-        count += 1
 
 
 if __name__ == '__main__':
